@@ -1,0 +1,80 @@
+{
+    "SCIENZE NATURALI (BIOLOGIA, CHIMICA, SCIENZE DELLA TERRA)": [
+        {
+            "time": "10-09",
+            "consegna": "Svolgere esercizi pag.558"
+        },
+        {
+            "time": "09-30",
+            "consegna": "Esercizio n&deg;2 pag.552"
+        },
+        {
+            "time": "09-29",
+            "consegna": "Svolgere esercizi pag.567 n&deg;9,10."
+        },
+        {
+            "time": "09-26",
+            "consegna": "Svolgere gli esercizi pag.543 e seguenti n&deg;69,71,73,74."
+        },
+        {
+            "time": "09-23",
+            "consegna": "Svolgere esercizi di chimica pag.541 e seguenti n&deg;46, 48,51, 56, 57, 58."
+        }
+    ],
+    "MATEMATICA": [
+        {
+            "time": "10-07",
+            "consegna": "ex dal 339 al  381 ( i multipli di 3) pag  745 e seguenti"
+        },
+        {
+            "time": "10-06",
+            "consegna": "ex dal 262 al 268 pag 741-742; ex dal 276 al 337 pag 742 e seguenti"
+        },
+        {
+            "time": "10-03",
+            "consegna": "Ex dal 236 al 245 pag 739; ex dal 251 al 261 pag 741; ex dal 317 al 323 pag 744"
+        },
+        {
+            "time": "10-02",
+            "consegna": "ex dal 103 al 105 pag 731-731; dal 174 al 176 pag 735; dal 217 al 231 pag 738"
+        },
+        {
+            "time": "09-29",
+            "consegna": "Ex dal 162 al 173 pag 735; ex dal 177 al 215 ( i dispari) pag 736-737. Completare la tabella con i valori di seno, coseno e tangente degli angoli tra 0&deg; e 360&deg;"
+        },
+        {
+            "time": "09-26",
+            "consegna": "Ex dal 132 al 158 pag 733 e 734"
+        },
+        {
+            "time": "09-23",
+            "consegna": "Studiare le parti trattate"
+        }
+    ],
+    "INGLESE (LINGUA E CULTURA STRANIERA)": [
+        {
+            "time": "10-04",
+            "consegna": "Literature: Leggere a pag 142-143 e svolgere l&#039;esercizio Summing Up a pag. 143"
+        },
+        {
+            "time": "10-03",
+            "consegna": "Literature: Leggere a pag 140 To be, or not to be pag. 141 ex 1 e 7"
+        },
+        {
+            "time": "09-23",
+            "consegna": "Studiare le parti viste in classe. Leggere pp. 126-127  p. 128 svolgere esercizio #1 e #7"
+        }
+    ],
+    "Lab.Matematica integrativo": [
+        {
+            "time": "10-02",
+            "consegna": "Scheda di laboratorio sui grafici e le loro trasformazioni"
+        }
+    ],
+    "FISICA": [
+        {
+            "time": "09-16",
+            "consegna": "Studiare sul libro i seguenti argomenti: Temperatura, zero assoluto. Scale termometriche. Variabili di stato di un gas. Trasformazioni dei gas. Leggi di Boyle e di Gay-Lussac."
+        }
+    ]
+}

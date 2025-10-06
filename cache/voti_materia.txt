@@ -1,0 +1,10 @@
+{
+    "STORIA": [
+        {
+            "argomento": "Verifica di ripasso e riallineamento",
+            "tipo": "Scritto",
+            "valore": 8.0,
+            "data": "09-23"
+        }
+    ]
+}

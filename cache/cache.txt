@@ -1,0 +1,9 @@
+{
+    "nome": "TACCHI GIACOMO",
+    "indirizzo": "SCIENTIFICO - OPZIONE SCIENZE APPLICATE",
+    "classe": "4LD",
+    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1aWQiOiJtY3BhcmVudF8xNjQ4NDc2MjQ3LjI0OTg3MWJiZGIyOV9nYWxpbGVpLWNyIiwidHlwZSI6InBhcmVudCIsInRpbWUiOjE3NTk3NjY5MjUsImRhdGUiOiIwNlwvMTBcLzIwMjUgMTg6MDgiLCJleHBpcmF0aW9uIjoxNzYyMzU4OTI1fQ.w5HqD95JZ57sQXavUrOR4bzEZYfI7f5AoynNf5qdWKg",
+    "headers": {
+        "authorization": "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1aWQiOiJtY3BhcmVudF8xNjQ4NDc2MjQ3LjI0OTg3MWJiZGIyOV9nYWxpbGVpLWNyIiwidHlwZSI6InBhcmVudCIsInRpbWUiOjE3NTk3NjY5MjUsImRhdGUiOiIwNlwvMTBcLzIwMjUgMTg6MDgiLCJleHBpcmF0aW9uIjoxNzYyMzU4OTI1fQ.w5HqD95JZ57sQXavUrOR4bzEZYfI7f5AoynNf5qdWKg"
+    }
+}
