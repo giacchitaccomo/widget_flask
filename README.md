@@ -1,0 +1,1 @@
+senza un file config.txt nella directory dei file, con struttura {"mastercom":"XXXXXXXX","utente":"XXXXXX","password":"XXXXXXXX"} con credenziali valide non funziona. Per "mastercom" si intende l'identificatore dell'istituto, tipo "galilei-cr"
