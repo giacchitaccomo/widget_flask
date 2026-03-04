@@ -1,0 +1,44 @@
+@import url("navbar.css");
+
+
+*{
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+
+body {
+    font-family: "Titillium Web";
+}
+
+table{
+    border-collapse: collapse;
+    margin-left: 2.5%;
+    width: 95%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    
+}
+
+td, th {
+    border-color: black;
+    padding: 10px;
+    border: 1px solid black;
+    text-align: center;
+    text-transform: uppercase;
+    
+}
+
+.laterali{
+    background-color: RGBA(0, 102, 204, var(--bs-bg-opacity, 1));
+    color: white;
+    font-weight: 600;
+}
+
+.titolo {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+

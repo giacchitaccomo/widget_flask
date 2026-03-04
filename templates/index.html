@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,700;1,700&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/navbar.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/index.css') }}"
+    />
+    <link
+      rel="icon"
+      href="{{ url_for('static', filename='img/widget_color.png') }}"
+      type="image/png"
+    />
+    <style></style>
+  </head>
+
+  <body>
+    <div>
+      <nav class="navbar">
+        <a href="{{ url_for('home') }}"
+          ><img
+            class="navbar-logo"
+            src="{{ url_for('static', filename='img/widget.png') }}"
+            alt="logo"
+        /></a>
+        <ul class="navbar-menu">
+          <li><a href="{{ url_for('orario_settimanale') }}">orario</a></li>
+          <li><a href="{{ url_for('compiti') }}">compiti</a></li>
+          <li><a href="{{ url_for('voti') }}">voti</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <!-- parole chiave - registro elettronico widget galilei crema  -->
+  </body>
+</html>

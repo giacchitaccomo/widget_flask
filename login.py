@@ -10,7 +10,7 @@ def fetch(path):
     """
     Dal sito del registro elettronico accedo e ricavo le informazioni generali, ritornate come dict
     """
-    url =  "https://" + "galilei-cr-sito.registroelettronico.com/api/v4/utenti/login/"
+    url =  "https://" + "galilei-cr-sito.registroelettronico.com/api/v4/utenti/login-web/"
     pack = ""
     
     path = path / "config.txt"

@@ -3,6 +3,30 @@ from collections import defaultdict
 from cache import save_cache, fetch_cache
 from fetchers import fetch_online
 from login import fetch
+from datetime import date, timedelta, datetime
+
+inizio = str(date.today())
+fine = str(date.today() + timedelta(days=6))
+
+def get_day(date):
+    
+
+    dt = datetime.fromisoformat(date)
+
+    giorni = {
+        "Monday": 0,
+        "Tuesday": 1,
+        "Wednesday": 2,
+        "Thursday": 3,
+        "Friday": 4,
+        "Saturday": 5,
+        "Sunday": 6
+    }
+
+    date = giorni[dt.strftime("%A")]
+    
+    return date
+
 
 
 
@@ -10,7 +34,8 @@ from login import fetch
 urls = {
     "materie" : "https://galilei-cr-sito.registroelettronico.com/api/v3/scuole/galilei-cr/studenti/1008147/2025_2026/materie_nextapi/" , #per ora funziona solo con me (1008147)
     "compiti" : "https://galilei-cr-sito.registroelettronico.com/api/v3/scuole/galilei-cr/studenti/1008147/2025_2026/compiti_plain/",
-    "voti" : "https://galilei-cr-sito.registroelettronico.com/api/v3/scuole/galilei-cr/studenti/1008147/2025_2026/voti_plain/"
+    "voti" : "https://galilei-cr-sito.registroelettronico.com/api/v3/scuole/galilei-cr/studenti/1008147/2025_2026/voti_plain/",
+    "orario" : f"https://galilei-cr-sito.registroelettronico.com/api/v3/scuole/galilei-cr/studenti/1008147/2025_2026/orario_plain/?data_inizio={inizio}&data_fine={fine}"
     
 }
 
@@ -20,10 +45,20 @@ files = {
     "materie" : "materie.txt", 
     "compiti_materia" : "compiti_materia.txt",
     "voti_materia" : "voti_materia.txt",
-    "info" : "cache.txt"
+    "info" : "cache.txt",
+    "orario" : "orario.txt",
+    "orario_html" : "orario_html.txt"
 }
 
-def initialize(path, not_online):
+def initialize(path):
+    
+    not_online = True
+    print(" Online? y if yes anything if else")
+    ans = input("> ")
+    if ans.lower() == "y":
+        not_online = False
+        
+    
     if not_online:
         # OFFLINE: read everything from cache
         info = fetch_cache(path, files["info"])
@@ -32,6 +67,8 @@ def initialize(path, not_online):
         compiti_time = fetch_cache(path, files["compiti_time"])
         voti_materia = fetch_cache(path, files["voti_materia"])
         voti_tempo = fetch_cache(path, files["voti_time"])
+        orario = fetch_cache(path, files["orario"])
+        orario_html = fetch_cache(path, files["orario_html"])
 
     else:
         # ONLINE: fetch from server and rebuild caches
@@ -48,13 +85,17 @@ def initialize(path, not_online):
 
         voti_raw = fetch_online(headers, urls["voti"])
         voti_materia, voti_tempo = catalog_voti(voti_raw, path)
+        
+        orario = fetch_online(headers, urls["orario"])
+        orario, orario_html = catalog_orario(orario, path, materie)
 
-    return voti_materia, voti_tempo, compiti_materia, compiti_time, materie
+    return voti_materia, voti_tempo, compiti_materia, compiti_time, materie, orario, orario_html
     
   
     
 def categorize_subjects(subjects, path):   
     materie = {}
+    
     
     for x in subjects:
         prof = x["professori"][0]["nome"]
@@ -92,6 +133,71 @@ def catalog_info(answer, path):
     logging.debug("Info categorized successfully")
     save_cache(info, path, files["info"])
     return info
+
+
+def catalog_orario(orario, path, materie):
+    orario_org = defaultdict(list)
+    corrette = fetch_cache(path, "materie_corrette.txt")
+    last_weight = -1
+    last_seen = ""
+    orario_pulito = []
+    
+    for x in range(len(orario)):
+        obj = orario[x]
+        nome = materie[obj["id_materia"]]["nome"]
+        weight = corrette[nome][1]
+        ora = obj["data_ora_inizio"]
+        
+        orario_pulito.append(obj)
+        if last_seen == ora:
+            if last_weight > weight:
+                orario_pulito.pop()
+            else:
+                orario_pulito.pop(-2)
+                
+        last_seen = ora
+        last_weight = weight
+
+    
+    
+    for obj in orario_pulito:
+
+        orario_org[get_day(obj["data_ora_inizio"][:10])].append(corrette[materie[obj["id_materia"]]["nome"]][0]) 
+        
+
+    orario_ordinato = dict(sorted(orario_org.items()))
+    
+    orario_html = {}
+
+    giorni_chiavi = [0, 1, 2, 3, 4, 5] 
+    orario_html = {}
+
+    for x in range(8):
+        if x == 5:
+  
+            orario_html[x] = "PAUSA"
+            continue
+        
+        # x_adj serve per saltare l'indice della pausa
+  
+        x_adj = x if x < 5 else x - 1
+        riga_ora = []
+        
+        for g in giorni_chiavi:
+            # orario_ordinato deve essere il dict {giorno: [materie]}
+            materie_giorno = orario_ordinato.get(g, [])
+            
+            if len(materie_giorno) > x_adj:
+                riga_ora.append(materie_giorno[x_adj])
+            else:
+                riga_ora.append("") # Cella vuota se non c'è lezione
+        
+        orario_html[x] = riga_ora
+
+    save_cache(orario_html, path, files["orario_html"])  
+    save_cache(orario_ordinato, path, files["orario"])   
+    return orario_ordinato, orario_html
+    
 
 
 #migliorato
